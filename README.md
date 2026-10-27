@@ -217,7 +217,7 @@ labels in every run: **Synovitis and MCL** (reports explain them worst), then La
 |---|---|---|
 | EDA | `rsna_eda` | **https://www.kaggle.com/code/khushvaghela/rsna-eda** |
 | Stage 0 hygiene | `stage0_hygiene` | **https://www.kaggle.com/code/khushvaghela/stage-0** |
-| Stage 1 extraction (Qwen + vLLM, T4 x2) | `stage1_run` | **https://www.kaggle.com/code/khushvaghela29/stage-1**(See Version 15) |
+| Stage 1 extraction (Qwen + vLLM, T4 x2) | `stage1_run`(See Version 15) | **https://www.kaggle.com/code/khushvaghela29/stage-1** |
 | Stage 2 label model | `stage2_label_model` | **https://www.kaggle.com/code/khushvaghela29/stage-2** |
 | Side sources + side classifier | `side_sources`, `side_classifier` | **https://www.kaggle.com/code/khushvaghela29/side-sources** |
 | DICOM cache build | `dicom_cache` | **https://www.kaggle.com/code/khushvaghela29/stage-3** |
