@@ -11,7 +11,6 @@ reports into training labels with an LLM, trains a multi-series MRI model on the
 | Internal check: 58 gold studies, one model (flip, fold 0) | 0.877 macro AUC |
 | Internal check: 58 gold studies, same model without laterality handling | 0.842 macro AUC |
 
-Leaderboard rank / late-submission status: **[ADD]**.
 For context only: the public notebooks I studied reported higher public scores (a CoAtNet checkpoint at 0.924, a blend of public checkpoints at 0.958).
 **None of their weights, code or notebooks are used here**; the goal was an original, understood pipeline. Gold-set numbers are on n = 58 and are noisy
 (about ±0.03 on the macro, ±0.1 on a single label); see [Limitations](#9-limitations-and-honest-caveats).
