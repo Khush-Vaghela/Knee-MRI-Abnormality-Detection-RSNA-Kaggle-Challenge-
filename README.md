@@ -95,7 +95,7 @@ slices, and a "pseudo-site" grouping (manufacturer, model, field strength, langu
   Baker's = 1. This is why a thresholded mapping is learned later instead of trusting mentions.
 
 ### 3.3 Stage 1: structured extraction with Qwen (`stage1_extraction.py`, `stage1_run.py`)
-- **Model:** Qwen3-8B (**[confirm exact checkpoint]**), served with **vLLM on Kaggle T4 x2** (tensor parallel 2, fp16, constrained JSON decoding). Qwen3-14B was too
+- **Model:** Qwen3-8B, served with **vLLM on Kaggle T4 x2** (tensor parallel 2, fp16, constrained JSON decoding). Qwen3-14B was too
   slow to use; the 8B model through Hugging Face 4-bit generation ran at 58.6 s/study, vLLM at **7.4 s/study** including retries (estimated about 9 h for all 4,407 studies).
 - **Output per finding:** `state`, `severity` (the report's own size word), `qualifier` (closed vocabulary such as `grade1_sprain`, `full_thickness_defect_or_ulcer`),
   `size_mm`, a **verbatim evidence quote**, and a `conflict` flag. Plus `report_kind` and `knee_side`.
@@ -160,7 +160,7 @@ Group K-fold (k = 5) by a site proxy (normalised manufacturer + model + field st
 - **Laterality ablation** (same fold, same seed, 8 epochs): flip beat none at every epoch on validation Spearman and gold AUC; see [Results](#4-results). **Decision: flip.**
 
 ### 3.10 Final models and inference (`infer_knee.py`)
-- **Final models:** laterality flip, MIL head, aux loss 0.3, trained on **all non-gold studies**, two seeds (**[confirm epochs; 10 recommended]**), checkpoints = last epoch (EMA weights).
+- **Final models:** laterality flip, MIL head, aux loss 0.3, trained on **all non-gold studies**, two seeds, 10 epochs, checkpoints = last epoch (EMA weights).
 - **Inference:** per study, preprocessing on the fly with `dicom_cache`, side predicted by the CNN from the coronal images, laterality applied exactly as in training, both
   checkpoints run, predictions **rank-averaged** per label. Failed studies get the per-label median, not a constant. Series-level decode errors and codec availability are logged.
 - **Verification:** running the offline code on the 58 gold studies reproduces the training logs (flip **0.8773** vs 0.8770; none **0.8416** vs 0.8416). About 1.2 minutes for 58 studies.
